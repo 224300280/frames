@@ -1,6 +1,6 @@
 Frames::Application.routes.draw do
 	
-	get "users/new"
+	resources :users
 
 	match '/map',  :to => 'pages#map'
   	match '/about',   :to => 'pages#about'
