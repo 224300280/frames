@@ -1,7 +1,33 @@
+<section id="photos" class="body"><!-- This section includes photo slide to attract customers -->
+	<figure>
+		<%= image_tag("photo1.jpg", :alt => "selection of photos",  :width => "920", :height => "326", :name => "slide") %>
+	</figure>
+</section><!-- /#photos -->
+		
+<script type = "text/javascript" src="/javascripts/slideshow.js">
+</script>
 
-    <h1>Sample App</h1>
-    <p>
-      This is the home page for the
-      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-      sample application.
-    </p>
+
+
+
+<section id="content" class="body" ><!-- This section will include the mais text for the page -->
+			
+	<div id = "top"><!-- sign up now-->
+		<%= link_to image_tag("Signup.jpg", :alt => "sign up button")%>
+		<p>Join Frames for free and share your photos with the world</p>
+	</div>
+			
+	<div id = "centre"><!-- Share you photos -->
+		<%= link_to image_tag("upload.jpg", :alt => "upload button")%>
+		<p>Just sign in to upload your photos</p>
+	</div>
+				
+	<div id="bottom"><!-- Enter -->
+		<%= link_to image_tag("enter.jpg", :alt => "explore button")%>
+		<p>Enter to see what's on the spotlight</p>
+	</div>
+			
+	<div class = "clear">
+	</div>
+		
+</section><!-- /#content -->

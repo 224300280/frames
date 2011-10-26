@@ -1,7 +1,13 @@
 Frames::Application.routes.draw do
-  get "pages/home"
-  get "pages/map"
-  get "pages/about"
+	
+	get "users/new"
+
+	match '/map',  :to => 'pages#map'
+  	match '/about',   :to => 'pages#about'
+	match '/signup',  :to => 'users#new'
+
+
+	root :to => 'pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

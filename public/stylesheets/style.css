@@ -1,0 +1,208 @@
+/* 
+	Description: Layout for website main page
+	Date: August 2011
+	Author: Nathalia Spier
+
+*/
+
+/* Reset */
+@import url("reset.css");
+
+
+/**** General Attributes ****/ 
+ 
+body {
+	background: #FFFFFF;
+	height: 100%;
+	color: #868686;
+	font-family: "HelveticaNeue-Regular", "Helvetica Neue Regular", Helvetica, Arial, Tahoma, 
+		Verdana, sans-serif;
+	line-height: 25px;
+	margin: 0;
+	padding: 0;
+	font-size: small;
+	   
+}
+html {
+	height: 100%;
+}
+
+a:link, a:visited, a:hover, a:active {
+	color:#868686;
+	text-decoration:none;
+} 
+
+
+.body {
+	width: 920px;
+	margin: 0 auto;
+	padding:0;
+}
+
+
+header, section, footer, nav, figure {
+    display: block;
+}
+
+
+/**** Header ****/
+
+.top_bottom {
+	background: #242424  url('../images/background.gif');
+}
+
+#intro figure { 
+	float: left; 
+	padding: 1em 0 1em 0;
+}
+
+#intro nav { 
+	float: right; 
+	padding: 1em 0 1em 0;	
+}
+
+.clear { 
+	clear: both; 
+}
+
+#intro nav ul { 
+	list-style: none; 
+	margin: 0 auto; 
+}
+
+
+
+/**** Photos Section ****/
+
+#photos {
+	margin: 0 auto;
+	padding: 2em 0 2em 0;
+}
+
+#photos figure {
+	text-align: center;
+}
+
+
+/**** Content Section ****/
+
+#content {
+	width: 920px;
+	padding: 2.5em 0 2.5em 0;
+	
+}
+
+#content div {
+	padding: 1em 0 1em 0;
+}
+
+#content p{
+	width: 600px;
+	text-align: left;
+	float: right;
+	font-size: 22px;
+	padding: 0 0.75em 0 0;
+}
+
+#content img {
+	padding: 0 0 0 7em;
+}
+
+
+#top {
+	border-style: dotted;
+	border-width:0px;
+	border-top-width:1px;
+        	
+}
+
+#centre {
+	border-style: dotted;
+        border-width:1px;
+	border-right-width:0px;
+	border-left-width:0px;
+}
+
+#bottom {
+	border-style: dotted;
+        border-top-width:0px;
+        border-bottom-width:1px;
+        border-left-width:0px;
+	border-right-width:0px;
+}
+	
+
+/**** Footer ****/
+
+#site_info {
+	height: 100px
+}
+
+#footer_div {
+	padding: 1em 0 0 0;
+	text-align: center;
+	font-size: small;
+}
+
+#site_info ul { 
+	list-style: none; 
+	margin: 0 auto; 
+}
+
+#site_info li { 
+	display: inline; 
+	margin: 0; 
+}
+	
+	
+.field_with_errors {
+	margin-top: 10px;
+	padding: 2px;
+	background-color: red;
+	display: table;
+}	
+
+.field_with_errors label {
+	color: #fff;
+}
+
+#error_explanation {
+	width: 400px;
+	border: 2px solid red;
+	padding: 7px;
+	padding-bottom: 12px;
+	margin-bottom: 20px;
+	background-color: #f0f0f0;
+
+}
+
+#error_explanation h2 {
+	text-align: left;
+	font-weight: bold;
+	padding: 5px, 5px, 5px, 15px;
+	font-size: 12px;
+	margin: -7px;
+	background-color: #c00;
+	color: #fff;
+}
+
+#error_explanation p {
+	color: #333;
+	margin-bottom: 0;
+	padding: 5px;
+
+}
+
+
+#error_explanation ul li {
+	font-size: 12px;
+	list-style: none; 
+
+
+}
+
+
+
+
+
+	

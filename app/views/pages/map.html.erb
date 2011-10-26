@@ -1,6 +1,56 @@
 
-    <h1>Contact</h1>
-    <p>
-      Contact Ruby on Rails Tutorial about the sample app at the
-      <a href="http://railstutorial.org/feedback">feedback page</a>.
-    </p>
+		<style type="text/css">
+			
+			/*create sticky footer*/
+    		#wrap {
+        		min-height: 86%;
+        		margin: 0 auto -100px; /* Set footer height. */
+    		}
+    		
+    		#map {
+    			width: 700px;
+    			color: #242424;
+    			padding: 4em 0 0 0;  
+    		}
+    		#map h3 {
+    			font-weight:bold;
+    			font-size: 18px;
+    			 
+    		}
+    		
+    		#map p {
+    			padding: 2em 0 1em 3em;
+    			font-size: 15px;
+    		}
+    		
+    		#map ul {
+    			list-style-type: disc;
+    			line-height:40px;
+    			font-size: 15px;
+    			padding: 0 0 0 6em;
+    		}
+    	
+			#map a:hover{color:#242424;}
+    		
+		</style>
+
+		<div id ="wrap">
+		
+		
+		<section id="map" class="body">
+		<h3>Frames Site Map</h3>
+		<p><%= link_to "Frames Photo Sharing", root_path%></p>
+		<ul>
+			<li><%= link_to "Register for a Free Frames Account", "#" %></li>
+			<li><%= link_to "Log in to your Frames Account", "#" %></li>
+			<li><%= link_to "Explore Frames", "#" %></li>
+			<li><%= link_to "About Frames", about_path %></li>
+		</ul>
+		</section>
+		
+		
+	
+		</div> <!-- end of wrap -->
+		
+		
+		

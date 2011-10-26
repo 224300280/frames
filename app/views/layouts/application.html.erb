@@ -1,12 +1,69 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @title %></title>
+    <title><%= title %></title>
     <%= stylesheet_link_tag :all %>
     <%= javascript_include_tag :all %>
     <%= csrf_meta_tag %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-  <body>
-    <%= yield %>
-  </body>
+  	<header id ="intro" class = "top_bottom">
+		<div id="intro_body" class="body">
+		<figure id ="logo">
+			<%= link_to image_tag("logo.jpg", :alt => "website logo"), root_path%>
+		</figure>
+		<nav id="intro_nav">
+			<ul>
+				<li><%= link_to "Sign in", "#" %> | <%= link_to "Sign up", "#" %></li>
+				<!-- <li>
+					<form action = "" method ="get">
+						<input type = "text" name ="query" id ="query" size ="30" value ="">
+						<input type = "submit" value ="Search">
+						<input type = "hidden" name ="Search" value = "1">
+					</form>
+				</li> -->
+			</ul>
+		</nav>
+		</div>
+		<div class= "clear">
+		</div>
+	</header>
+	  
+    <body>
+    	
+    	
+    	<%= yield %>
+    	
+
+    	
+  		<footer id="site_info" class="top_bottom" ><!-- Includes information and links about the website -->
+			<div id="footer_div" class="body">
+			<div>
+				<ul>
+					<li><%= link_to "About Frames |", about_path %></li>
+					<li><%= link_to "Site Map", map_path %></li>
+				</ul>
+				<p>
+					<a href="http://jigsaw.w3.org/css-validator/check/referer">
+   						 <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!" />
+					</a>
+					<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fstudent.csse.uwa.edu.au%2F~20430452%2FProject%2Findex.html">HTML 5 Validation</a>
+				</p>
+        
+			</div>
+			
+			</div>
+		</footer><!-- /#site>info -->
+    
+    </body>
 </html>
+
+
+
+
+	
+
+ 
+     
