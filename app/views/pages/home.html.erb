@@ -13,17 +13,17 @@
 <section id="content" class="body" ><!-- This section will include the mais text for the page -->
 			
 	<div id = "top"><!-- sign up now-->
-		<%= link_to image_tag("signup.jpg", :alt => "sign up button")%>
+		<%= link_to image_tag("signup.jpg", :alt => "sign up button"), signup_path%>
 		<p>Join Frames for free and share your photos with the world</p>
 	</div>
 			
 	<div id = "centre"><!-- Share you photos -->
-		<%= link_to image_tag("upload.jpg", :alt => "upload button")%>
+		<%= link_to image_tag("upload.jpg", :alt => "upload button"), signin_path%>
 		<p>Just sign in to upload your photos</p>
 	</div>
 				
 	<div id="bottom"><!-- Enter -->
-		<%= link_to image_tag("enter.jpg", :alt => "explore button")%>
+		<%= link_to image_tag("enter.jpg", :alt => "explore button"), users_path%>
 		<p>Enter to see what's on the spotlight</p>
 	</div>
 			

@@ -1,13 +1,20 @@
 Frames::Application.routes.draw do
-	
-	resources :users
-
-	match '/map',  :to => 'pages#map'
-  	match '/about',   :to => 'pages#about'
-	match '/signup',  :to => 'users#new'
+ 
+ resources :users
+ resources :sessions, :only => [:new, :create, :destroy]  
 
 
-	root :to => 'pages#home'
+
+ match '/signup', :to =>  'users#new'
+ match '/signin', :to =>  'sessions#new'
+ match '/signout', :to => 'sessions#destroy'
+
+
+ match '/about', :to =>  'pages#about'
+ match '/map',  :to =>  'pages#map'  
+
+ root :to => 'pages#home'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

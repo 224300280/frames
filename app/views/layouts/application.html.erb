@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title><%= @title %></title>
     <%= stylesheet_link_tag :all %>
     <%= javascript_include_tag :all %>
     <%= csrf_meta_tag %>
@@ -16,7 +16,10 @@
 		</figure>
 		<nav id="intro_nav">
 			<ul>
-				<li><%= link_to "Sign in", "#" %> | <%= link_to "Sign up", "#" %></li>
+				<% if signed_in? %>
+      				<li><%= link_to "Sign out", signout_path, :method => :delete %> | <%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+     			 <% else %>
+				<li><%= link_to "Sign in", signin_path %> | <%= link_to "Sign up", signup_path %></li>
 				<!-- <li>
 					<form action = "" method ="get">
 						<input type = "text" name ="query" id ="query" size ="30" value ="">
@@ -24,6 +27,7 @@
 						<input type = "hidden" name ="Search" value = "1">
 					</form>
 				</li> -->
+				<% end %>
 			</ul>
 		</nav>
 		</div>

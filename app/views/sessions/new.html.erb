@@ -1,0 +1,185 @@
+
+		<script type="text/javascript">
+			function submit() {
+			var first = document.getElementById("login_username");
+			var second = document.getElementById("login_password");
+	
+			if (first.value == "" || second.value == "") {
+				alert("Please enter a valid username and password");
+				return false;
+			} else 
+				return true;
+			}
+		</script>
+		
+		<style type="text/css">
+	
+		/* login form */	
+
+			#theform {
+				width: 800px;
+				text-align: center;
+				padding: 7em 0 0 32em;
+			}
+
+			#theform form{
+				background:#FFFFFF;
+				border:8px solid #eee;
+				width:600px;
+				-ms-border-radius:5px;
+				-o-border-radius:5px;
+				-chrome-border-radius:5px;
+				-moz-border-radius:5px;
+				-webkit-border-radius:5px;
+				border-radius:5px;
+				text-align:left;
+				position:relative;
+			}
+	
+			#theform form a, #login a:visited{color:#868686;}
+			#theform form a:hover{color:#242424;}
+
+			#theform form h1{
+				background: url('images/background.gif');
+				color:#868686;
+				font-size:14px;
+				padding:18px 23px;
+				margin:0 0 1.5em 0;
+				border-bottom:1px solid #242424;
+			}
+	
+			#theform form .register{
+				position:absolute;
+				float:left;
+				margin:0;
+				line-height:30px;
+				top:-40px;
+				right:0;
+				font-size:11px;
+			}
+			
+			#theform form p{margin:.5em 25px;}
+
+			#theform form div{
+				margin:.5em 25px;
+				background:#EEEEEE;
+				padding:4px;
+				-ms-border-radius:3px;
+				-o-border-radius:3px;
+				-chrome-border-radius:3px;
+				-moz-border-radius:3px;
+				-webkit-border-radius:3px;
+				border-radius:3px;
+				text-align:right;
+				position:relative;
+			}	
+	
+			#theform form .field label{
+				float:left;
+				line-height:30px;
+				padding-left:10px;
+			}
+	
+			#theform form .field input{
+				border:1px solid #ccc;
+				width:280px;
+				font-size:12px;
+				line-height:1em;
+				padding:4px;
+				-o-border-radius:5px;
+				-chrome-border-radius:5px;
+				-ms-border-radius:5px;
+				-moz-border-radius:5px;
+				-webkit-border-radius:5px;
+				border-radius:5px;
+			}	
+	
+			#theform form div.actions{background:none;margin:1em 25px;text-align:left;}	
+			#theform form div.actions label{float:none;display:inline;font-size:11px;}
+			
+
+			#theform form .actions input{
+				border:0;
+				padding:0 30px;
+				height:30px;
+				line-height:30px;
+				text-align:center;
+				font-size:12px;
+				color:#868686;
+				background: url('images/background.gif');
+				-moz-border-radius:50px;
+				-ms-border-radius:50px;
+				-o-border-radius:50px;
+				-chrome-border-radius:50px;
+				-webkit-border-radius:50px;
+				border-radius:50px;
+			}
+	
+			#theform form .forgot{text-align:right;font-size:11px;}
+			#theform form .back{padding:1em 0;border-top:1px solid #eee;text-align:right;font-size:11px;}
+
+			#theform form div.flash {
+				background-color: #FFFFFF;
+				text-align: center;
+				font-size: 14px;
+				font-weight: bold;
+				color: red;
+			}	
+		/*create sticky footer*/
+
+    		#wrap {
+        		min-height: 90%;
+        		margin: 0 auto -100px; /* Set footer height. */
+    		}
+
+    		footer{
+        		height: 100px; 
+    		}
+    				
+		</style>
+	
+
+	<div id ="wrap">
+		
+		<section id="theform">
+		 
+	<%= form_for(:session, :url => sessions_path) do |f| %>
+
+
+   				<h1>Sign in in to your <strong>Frames</strong> account!</h1>
+			    <p class="register">Not a member? <a href="/signup"><span style ="text-decoration:underline;">Register here!</span></a></p>
+    
+
+			    <div class = "field">
+    				<%= f.label :name %>
+				<%= f.text_field :name %>
+		   	    </div>			
+
+			    <div class = "field">
+    				<%= f.label :password %>
+				<%= f.password_field :password %>
+		    	    </div>			
+    	 		<% flash.each do |key, value| %>
+				<div class = "flash <%= key %>"><%= value %></div>
+			<% end %>
+
+
+			    	
+    			
+			    <div class="actions">
+    	    		       <%= f.submit "Sign in" %>      
+    			   </div>
+
+			<p class="back"><%= link_to "Go Back to Main Page", root_path%></p>
+    			
+	<% end %>
+    			
+							
+		</section>
+		</div> <!-- end of wrap -->
+		
+		<script type="text/javascript">
+			document.forms[0].onsubmit = submit;
+		</script>
+		
+		
