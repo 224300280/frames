@@ -1,1 +1,106 @@
-<%= @user.name %>, <%= @user.email %>
+
+		<script type="text/javascript" src="scripts/signupcheck.js">
+		</script>
+		<style type="text/css">
+			
+			/*create sticky footer*/
+    		#wrap {
+        		min-height: 90%;
+        		margin: 0 auto -100px; /* Set footer height. */
+    		}
+    		
+    		footer{
+        		height: 100px; 
+    		}
+    		
+    		#forms {
+    			padding: 2.5em 0 0 2.5em;
+    			width: 920px;
+    		}
+    		
+    		.flash {
+				text-align: center;
+				color: #242424;
+				font-size: 30px;
+				padding: 0 0 1em 0;		
+			}
+    		
+    		#left {
+				width: 380px;  
+				float:left;
+				color: #242424;
+				
+    		}
+    		
+    		#left p {
+    			padding: 1em 0 1em 0;
+    			font-size: 16px;
+    		}
+			
+			#right {
+				text-align: center;
+				width: 520px;
+				padding: 7.5em 0 0 0;
+				float: right;
+				
+			}
+					
+			#form1 input{		
+				width:252px;
+				height: 20px;
+				border:1px solid #868686;
+				padding:3px;
+				border-radius: 10px;
+				-moz-border-radius: 10px;
+				-ms-border-radius: 10px;
+				-o-border-radius: 10px;
+				-chrome-border-radius: 10px;
+				-webkit-border-radius: 10px;
+			}	
+			
+			#form1 button{
+				width:150px;
+				height:37px;
+				line-height:37px;		
+				font-size: 15px;
+				background:url('images/background.gif') no-repeat 0 0;
+				color:#868686;
+				text-align:center;
+				border:none;
+				border-radius: 10px;
+				-moz-border-radius: 10px;
+				-ms-border-radius: 10px;
+				-o-border-radius: 10px;
+				-chrome-border-radius: 10px;
+				-webkit-border-radius: 10px;
+			}
+			
+			span {
+				font-size: small;
+				color: #D00000;
+				font-weight:bold;
+			}
+			
+		</style>
+	
+		<div id ="wrap">
+	
+		
+		
+		<section id="forms" class="body"><!-- This section includes the section for signup form -->
+			<% flash.each do |key, value| %>
+				<div class = "flash <%= key %>"><%= value %></div>
+			<% end %>
+			<div id = "left">
+			<%= gravatar_for @user %> <%= @user.name %> <br />
+			<%= link_to user_path(@user), @user %>	
+			</div>
+			
+			
+			<div id = "right">
+				<%= image_tag("picture_signup.jpg",  :alt => "signup_picture") %>
+			</div>
+		</section>
+		</div> <!-- end of wrap -->
+		
+		
