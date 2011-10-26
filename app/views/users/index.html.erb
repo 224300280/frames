@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html xmlns = "http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-		<title>Register for a free Frames account</title>
-		<link rel="stylesheet" type="text/css" href="style.css"/>
+
 		<script type="text/javascript" src="scripts/signupcheck.js">
 		</script>
 		<style type="text/css">
@@ -56,29 +51,9 @@
 		}
 			
 		</style>
-	</head>
-	<body>
+	
 		<div id ="wrap">
-		<header id="intro" class="top_bottom"><!-- Header of the website with logo and sign in/sign up and search options -->
-			<div id="intro_body" class="body">
-			<figure id="logo">
-				<a href="/frames"><%= image_tag("logo.jpg", :alt => "website logo")%></a>
-			</figure>
-			<nav id="into_nav">
-				<ul>
-					<li><%= link_to "Sign in |", signin_path %><%= link_to "Sign up", signup_path  %></li>
-					<li>
-						<form action="" id="search"> 
-							<input type="text" name="query" id="query" size="30" value=""> 
-							<input type="submit" value="Search"> 
-							<input type="hidden" name="search" value="1"> 
-						</form> 
-					</li>
-				</ul>
-			</nav>
-			<div class = "clear"></div>
-			</div>
-		</header><!-- /#intro -->
+
 		
 		
 		<section id="forms" class="body"><!-- This section includes the section for signup form -->
@@ -106,23 +81,4 @@
 		
 		
 		
-		<footer id="site_info" class="top_bottom" ><!-- Includes information and links about the website -->
-			<div id="footer_div" class="body">
-			<div>
-				<ul>
-					<li><a href="/frames/about">About Frames |</a></li>
-					<li><a href="/frames/map">Site map</a></li>
-				</ul>
-				<p>
-					<a href="http://jigsaw.w3.org/css-validator/check/referer">
-   						 <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!" />
-					</a>
-					<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fstudent.csse.uwa.edu.au%2F~20430452%2FProject%2Fenter.html">HTML 5 Validation</a>
-				</p>
-			</div>
-			
-			</div>
-		</footer><!-- /#site>info -->
 		
-	</body>
-</html>
