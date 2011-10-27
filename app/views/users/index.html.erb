@@ -5,8 +5,8 @@
 			
 			/*create sticky footer*/
     		#wrap {
-        		min-height: 90%;
-        		margin: 0 auto -100px; /* Set footer height. */
+        		min-height: auto;
+        		margin: 0 auto -auto; /* Set footer height. */
     		}
     		
     		footer{
@@ -64,18 +64,17 @@
 					<p>Start exploring some of Frames' most interesting photos and see the world
 					through someone else's eyes!</p>
 			</div>
-			<div id = "right">
 			
-			<ul class = "users">	
-			   <% @users.each do |user| %>
-		        	<li>
-			  		<%= link_to user.name, user %>
-			        <li>
-			   <% end %>
+			
+			<%= will_paginate %>
+
+			<ul class="users">
+  				<%= render @users %>
 			</ul>
 
+			<%= will_paginate %>
 
-			</div>
+
 		</section>
 		</div> <!-- end of wrap -->
 		

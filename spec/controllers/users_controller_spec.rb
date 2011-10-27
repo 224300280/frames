@@ -179,7 +179,149 @@ describe UsersController do
       		end
     	end
   	end
- 	
+  	
+  	describe "authentication of edit/update pages" do
+
+    	before(:each) do
+      		@user = Factory(:user)
+    	end
+
+    	describe "for non-signed-in users" do
+
+      		it "should deny access to 'edit'" do
+        		get :edit, :id => @user
+        		response.should redirect_to(signin_path)
+      		end
+
+      		it "should deny access to 'update'" do
+        		put :update, :id => @user, :user => {}
+        		response.should redirect_to(signin_path)
+      		end
+    	end
+    	
+    	describe "for signed-in users" do
+
+      		before(:each) do
+        		wrong_user = Factory(:user, :email => "user@example.net")
+        		test_sign_in(wrong_user)
+      		end
+
+      		it "should require matching users for 'edit'" do
+        		get :edit, :id => @user
+        		response.should redirect_to(root_path)
+      		end
+
+      		it "should require matching users for 'update'" do
+        		put :update, :id => @user, :user => {}
+        		response.should redirect_to(root_path)
+      		end
+    	end    	
+  	end
+  	
+  	describe "GET 'index'" do
+
+    	describe "for non-signed-in users" do
+      		
+      		it "should deny access" do
+        		get :index
+        		response.should redirect_to(signin_path)
+        		flash[:notice].should =~ /sign in/i
+      		end
+    	end
+
+    	describe "for signed-in users" do
+
+      		before(:each) do
+        		@user = test_sign_in(Factory(:user))
+        		second = Factory(:user, :name => "Bob", :email => "another@example.com")
+        		third  = Factory(:user, :name => "Ben", :email => "another@example.net")
+
+        		@users = [@user, second, third]
+       				30.times do
+			    	 	@users << Factory(:user, :email => Factory.next(:email))
+        		end
+      		end
+      		
+      		it "should have an element for each user" do
+        		get :index
+        		@users[0..2].each do |user|
+          			response.should have_selector("li", :content => user.name)
+        		end
+      		end
+      		
+      		it "should paginate users" do
+        		get :index
+        		response.should have_selector("div.pagination")
+        		response.should have_selector("span.disabled", :content => "Previous")
+        		response.should have_selector("a", :href => "/users?page=2", :content => "2")
+        		response.should have_selector("a", :href => "/users?page=2", :content => "Next")
+      		end
+
+      		it "should be successful" do
+        		get :index
+        		response.should be_success
+      		end
+
+      		it "should have the right title" do
+        		get :index
+        		response.should have_selector("title", :content => "Spotlight")
+      		end
+
+      		it "should have an element for each user" do
+        		get :index
+        		@users.each do |user|
+          			response.should have_selector("li", :content => user.name)
+        		end
+      		end
+    	end
+  	end
+  	
+  	describe "admin attribute" do
+
+    	before(:each) do
+    		@user = Factory(:user)
+    	end
+
+    	it "should respond to admin" do
+      		@user.should respond_to(:admin)
+    	end
+
+    	it "should not be an admin by default" do
+      		@user.should_not be_admin
+    	end
+
+    	it "should be convertible to an admin" do
+      		@user.toggle!(:admin)
+      		@user.should be_admin
+    	end
+  	end
+  	
+ 	describe "DELETE 'destroy'" do
+
+    	before(:each) do
+      		@user = Factory(:user)
+      		test_sign_in(@user)
+      	end
+
+    	describe "as an admin user" do
+
+      		before(:each) do
+        		admin = Factory(:user, :email => "admin@example.com", :admin => true)
+        		test_sign_in(admin)
+      		end
+
+      		it "should destroy the user" do
+        		lambda do
+          			delete :destroy, :id => @user
+        		end.should change(User, :count).by(-1)
+      		end
+
+      		it "should redirect to the users page" do
+        		delete :destroy, :id => @user
+        		response.should redirect_to(users_path)
+      		end
+    	end
+  	end
  	
 end
     
