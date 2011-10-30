@@ -5,7 +5,7 @@
 			
 			/*create sticky footer*/
     		#wrap {
-        		min-height: 90%;
+        		min-height: 100%;
         		margin: 0 auto -100px; /* Set footer height. */
     		}
     		
@@ -26,7 +26,7 @@
 			}
     		
     		#left {
-				width: 380px;  
+				width: 300px;  
 				float:left;
 				color: #242424;
 				
@@ -39,7 +39,7 @@
 			
 			#right {
 				text-align: center;
-				width: 520px;
+				width: 600px;
 				padding: 7.5em 0 0 0;
 				float: right;
 				
@@ -58,21 +58,11 @@
 				-webkit-border-radius: 10px;
 			}	
 			
-			#form1 button{
-				width:150px;
-				height:37px;
-				line-height:37px;		
-				font-size: 15px;
-				background:url('images/background.gif') no-repeat 0 0;
-				color:#868686;
-				text-align:center;
-				border:none;
-				border-radius: 10px;
-				-moz-border-radius: 10px;
-				-ms-border-radius: 10px;
-				-o-border-radius: 10px;
-				-chrome-border-radius: 10px;
-				-webkit-border-radius: 10px;
+		
+			.add {
+				text-align: center;
+				
+				
 			}
 			
 			span {
@@ -92,13 +82,60 @@
 				<div class = "flash <%= key %>"><%= value %></div>
 			<% end %>
 			<div id = "left">
-			<%= gravatar_for @user %> <%= @user.name %> <br />
-			<%= link_to user_path(@user), @user %>	
+			<%= gravatar_for @user %> <span style = "color: #242424; font-size: 16px;"><%= @user.name %></span> <br />
+			<!-- <%= link_to user_path(@user), @user %> -->
+			 <strong>Number of Photos:</strong> <%= @user.assets.count %>	
+			</div>
+			
+		
+			<div class = "add">
+				<p style = "color: #242424; font-size: 16px;"> Add Photos Now</p>
+			<%= form_for @asset, :html => { :multipart => true } do |f| %>
+
+
+			  <p>
+			    <%= f.file_field :asset %>
+			
+			  </p>
+			  <div class="actions">
+			    <%= f.submit "Add Photo" %>
+			  </div>
+			<% end %>
+			
 			</div>
 			
 			
+			
+			
 			<div id = "right">
-				<%= image_tag("picture_signup.jpg",  :alt => "signup_picture") %>
+				
+				<% unless @user.assets.empty? %>
+					<p style = "color: #242424; font-size: 16px;padding-bottom: 1em;"> Your Photos</p>
+				<% end %>
+				        
+				       <% for asset in @user.assets %>
+							<span style="padding: 0.5px;">
+							<%= link_to image_tag(asset.asset.url(:thumb)), asset %>
+							
+							
+							
+							
+							<%= link_to "x", asset, :method => :delete,
+						                            :confirm => "Would you like to delete this photo?",
+						                            :title => @user.assets %>
+							
+							</span>
+
+					   <% end %>
+					
+						
+				        <%= will_paginate @assets %>
+				    
+				
+				
+				
+					<!-- "/users/#{@user.id}/assets/#{@user.assets.find(params[:id])}"  -->
+				
 			</div>
 		</section>
 		</div> <!-- end of wrap -->

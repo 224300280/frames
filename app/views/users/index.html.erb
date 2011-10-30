@@ -5,8 +5,8 @@
 			
 			/*create sticky footer*/
     		#wrap {
-        		min-height: auto;
-        		margin: 0 auto -auto; /* Set footer height. */
+        		min-height: 100%;
+        		margin: 0 auto -100px; /* Set footer height. */
     		}
     		
     		footer{
@@ -29,7 +29,7 @@
 			
 			}
     		#left {
-    			padding: 0 0 4em 1em;
+    			padding: 0 0 1em 1em;
     		}
     		
 			#right {
@@ -66,12 +66,11 @@
 			</div>
 			
 			
-			<%= will_paginate %>
+			<ul>
 
-			<ul class="users">
+			
   				<%= render @users %>
 			</ul>
-
 			<%= will_paginate %>
 
 

@@ -1,7 +1,13 @@
 Frames::Application.routes.draw do
  
- resources :users
- resources :sessions, :only => [:new, :create, :destroy]  
+ resources :users do
+   resources :assets
+ end
+ resources :sessions, :only => [:new, :create, :destroy]
+ 
+ 
+ 
+ resources :assets, :only => [:create, :destroy, :show]  
 
 
 

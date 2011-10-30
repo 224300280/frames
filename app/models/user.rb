@@ -15,7 +15,10 @@
 class User < ActiveRecord::Base
   
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :assets_attributes
+  
+  has_many :assets, :dependent => :destroy
+  accepts_nested_attributes_for :assets, :allow_destroy => true
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

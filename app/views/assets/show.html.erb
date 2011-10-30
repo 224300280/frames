@@ -1,0 +1,54 @@
+
+
+<style type="text/css">
+	
+	/*create sticky footer*/
+	#wrap {
+		min-height: 100%;
+		margin: 0 auto -100px; /* Set footer height. */
+	}
+	
+	footer{
+		height: 100px; 
+	}
+	
+	.body {
+		padding-top: 1em;
+		text-align: center;
+	}
+	
+
+	
+	span {
+		font-size: small;
+		color: #D00000;
+		font-weight:bold;
+	}
+	
+</style>
+
+<div id ="wrap">
+
+
+	
+<section id="forms" class="body">
+	
+	
+	
+	
+	
+	
+	
+	<p>Sizes: <%= link_to "Thumbnail", @asset.asset.url(:thumb) %>
+			  <%= link_to "Small", @asset.asset.url(:small) %>
+			  <%= link_to "Medium", @asset.asset.url(:medium) %>
+	</p>
+
+			<%= image_tag(@asset.asset.url(:large)) %> 
+
+
+</section>
+
+
+</div> <!-- end of wrap -->
+

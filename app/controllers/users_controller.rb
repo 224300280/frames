@@ -6,18 +6,22 @@ class UsersController < ApplicationController
 
   	def index
 		@title = "Spotlight"
-		@users = User.paginate(:page => params[:page])
+		@users = User.paginate(:page => params[:page], :per_page => 5)
   	end
 
 
   	def show
 		@user = User.find(params[:id])
 		@title = @user.name
+		@assets = @user.assets.paginate(:page => params[:page], :per_page => 15)
+		@asset = Asset.new if signed_in?
+		
   	end
 
   	def new
 		@user = User.new
 		@title = "Sign up"
+		
   	end
   
   	def destroy
@@ -40,6 +44,7 @@ class UsersController < ApplicationController
 
   	def edit
 		@title = "Edit Profile"
+		@user = User.find(params[:id])
   	end
 
   	def update
@@ -52,18 +57,21 @@ class UsersController < ApplicationController
 	   		render 'edit'
 		end
   	end
+  	
+  
   
   	private
   
-  	def authenticate
-		deny_access unless signed_in?
-  	end
+  	#def authenticate
+		#deny_access unless signed_in?
+  	#end
 
   	def test
 		if signed_in?
 			access
 		end
   	end
+  	
 
   	def correct_user
 		@user = User.find(params[:id])

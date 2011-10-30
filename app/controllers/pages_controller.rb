@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
   @title = "Frames"
+
   end
 
   def about
