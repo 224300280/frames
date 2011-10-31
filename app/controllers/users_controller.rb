@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@title = @user.name
 		@assets = @user.assets.paginate(:page => params[:page], :per_page => 15)
+	#	5.times { @user.assets.build }
 		@asset = Asset.new if signed_in?
 		
   	end

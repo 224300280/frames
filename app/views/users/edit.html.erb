@@ -119,39 +119,7 @@
 				<%= link_to "Cancel", signin_path%>
 				 
 			</div>
-			<!--
-				<h4>New Files</h4>
-
-					<%= f.fields_for :assets, :html => { :multipart => true }  do |asset_fields| %>
-
-						<% if asset_fields.object.new_record? %>
-						<p>
-							<%= asset_fields.file_field :asset %>
-						</p>
-						<% end %>
-
-					<% end %>
-
-
-					<h4>Old Files</h4>
-
-					<%= f.fields_for :assets do |asset_fields| %>			
-
-						<% unless asset_fields.object.new_record? %>
-						<div class="thumb">
-							<%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original) %>
-							<%= asset_fields.check_box :_destroy %>			
-						</div>	
-						<% end %>
-
-					<% end %>
 			
-			
-			-->
-			
-			
-			
-
 			<% end %>	
 
 			</div>

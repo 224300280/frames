@@ -1,8 +1,8 @@
 class AssetsController < ApplicationController
   
-  before_filter :authenticate, :only => [:create, :destroy, :show]
-  before_filter :authorized_user, :only => :destroy
-
+  #before_filter :authenticate, :only => [:create, :destroy, :show]
+  #before_filter :authorized_user, :only => :destroy
+ 
   def show
     @asset = Asset.find(params[:id])
     @title = "Your Photo Number #{@asset.id}"
@@ -21,8 +21,9 @@ class AssetsController < ApplicationController
   end
 
   def destroy
-      @asset.destroy
-      redirect_back_or current_user
+    @asset = Asset.find(params[:id])
+    @asset.destroy
+    redirect_to current_user
   end
   
   

@@ -112,7 +112,7 @@
 				<% unless @user.assets.empty? %>
 					<p style = "color: #242424; font-size: 16px;padding-bottom: 1em;"> Your Photos</p>
 				<% end %>
-				        
+				       
 				       <% for asset in @user.assets %>
 							<span style="padding: 0.5px;">
 							<%= link_to image_tag(asset.asset.url(:thumb)), asset %>
@@ -120,9 +120,10 @@
 							
 							
 							
-							<%= link_to "x", asset, :method => :delete,
+							<%= link_to "x", asset_path(asset), :method => :delete,
 						                            :confirm => "Would you like to delete this photo?",
-						                            :title => @user.assets %>
+						                            :title => @user.assets, :controller => "assets",
+						 							:action => :destroy %>
 							
 							</span>
 
