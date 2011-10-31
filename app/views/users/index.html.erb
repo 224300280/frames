@@ -4,10 +4,20 @@
 		<style type="text/css">
 			
 			/*create sticky footer*/
+			<% if @assets.count > 56 %>
     		#wrap {
+        		min-height: auto;
+        		margin: 0 auto -auto px; /* Set footer height. */
+    		}
+
+			<% else %>
+		
+			#wrap {
         		min-height: 100%;
         		margin: 0 auto -100px; /* Set footer height. */
     		}
+			
+			<% end %>
     		
     		footer{
         		height: 100px; 
@@ -29,11 +39,11 @@
 			
 			}
     		#left {
-    			padding: 0 0 1em 1em;
+    			padding: 0 0 4em 1em;
     		}
     		
 			#right {
-				text-align: center;
+				text-align: left;
 			}
 			#right img {
 				padding: 1px;
@@ -66,13 +76,18 @@
 			</div>
 			
 			
-			<ul>
-
+			<div id ="right">
+			<% unless @assets.empty? %>
+					<% Asset.find_each do |asset|%>
+						<%= link_to image_tag(asset.asset.url(:thumb)), asset_path(asset) %> 
+					<% end %>
+					
+			<%end%>
 			
-  				<%= render @users %>
-			</ul>
-			<%= will_paginate %>
-
+		
+			</div>
+	
+		
 
 		</section>
 		</div> <!-- end of wrap -->

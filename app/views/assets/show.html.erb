@@ -1,11 +1,14 @@
 
 
+
 <style type="text/css">
 	
 	/*create sticky footer*/
+	
+	
 	#wrap {
-		min-height: 100%;
-		margin: 0 auto -100px; /* Set footer height. */
+		min-height: auto;
+		margin: 0 auto -auto px; /* Set footer height. */
 	}
 	
 	footer{
@@ -35,17 +38,15 @@
 	
 	
 	
-	
-	
-	
-	
-	<p>Sizes: <%= link_to "Thumbnail", @asset.asset.url(:thumb) %>
-			  <%= link_to "Small", @asset.asset.url(:small) %>
-			  <%= link_to "Medium", @asset.asset.url(:medium) %>
+	<p style = "color:#242424; padding: 1.5em 0 1.5em 0;">Sizes: <%= link_to "Thumbnail", @asset.asset.url(:thumb) %> |
+			  <%= link_to "Small", @asset.asset.url(:small) %> |
+			  <%= link_to "Medium", @asset.asset.url(:medium) %> |
+			  <%= link_to "Large", @asset.asset.url(:large) %>
 	</p>
-
-			<%= image_tag(@asset.asset.url(:large)) %> 
-
+ 
+			 
+     		  <%= image_tag(@asset.asset.url(:large), :id => "test") %>
+	
 
 </section>
 

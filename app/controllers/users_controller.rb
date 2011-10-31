@@ -6,15 +6,15 @@ class UsersController < ApplicationController
 
   	def index
 		@title = "Spotlight"
-		@users = User.paginate(:page => params[:page], :per_page => 5)
+		#@assets = Asset.all
+		@assets = Asset.all 
   	end
 
 
   	def show
 		@user = User.find(params[:id])
 		@title = @user.name
-		@assets = @user.assets.paginate(:page => params[:page], :per_page => 15)
-	#	5.times { @user.assets.build }
+		#	5.times { @user.assets.build }
 		@asset = Asset.new if signed_in?
 		
   	end

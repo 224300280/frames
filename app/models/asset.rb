@@ -17,9 +17,9 @@ class Asset < ActiveRecord::Base
   belongs_to :user
   has_attached_file :asset, :styles => {
                         :thumb => '100x100#',
-                        :small => '240x240>',
-                        :medium => '400x400>',
-                        :large => '600x600>'
+                        :small => '240x161>',
+                        :medium => '640x428>',
+                        :large => '920x685>'
                     }
   validates_attachment_presence :asset
   

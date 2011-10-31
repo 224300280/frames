@@ -1,7 +1,8 @@
 class AssetsController < ApplicationController
   
-  #before_filter :authenticate, :only => [:create, :destroy, :show]
-  #before_filter :authorized_user, :only => :destroy
+  before_filter :authenticate, :only => [:create, :destroy, :show]
+ 
+ @@Fuck = "screwed"
  
   def show
     @asset = Asset.find(params[:id])
@@ -27,15 +28,5 @@ class AssetsController < ApplicationController
   end
   
   
-
-    
-    private
-
-      def authorized_user
-        @asset = current_user.assets.find_by_id(params[:id])
-        redirect_to root_path
-      end
-      
-      
 end
 

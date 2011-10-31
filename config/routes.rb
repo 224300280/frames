@@ -3,11 +3,11 @@ Frames::Application.routes.draw do
  resources :users do
    resources :assets
  end
- resources :sessions, :only => [:new, :create, :destroy]
+ resources :sessions, :only => [:new, :create, :destroy, :show]
  
  
  
- resources :assets, :only => [:create, :destroy, :show]  
+ resources :assets, :only => [:create, :destroy, :show, :index]  
 
 
 

@@ -1,4 +1,5 @@
 
+
 		<script type="text/javascript" src="scripts/signupcheck.js">
 		</script>
 		<style type="text/css">
@@ -87,9 +88,13 @@
 			 <strong>Number of Photos:</strong> <%= @user.assets.count %>	
 			</div>
 			
+			<% if @user == current_user %>
+			
 		
 			<div class = "add">
 				<p style = "color: #242424; font-size: 16px;"> Add Photos Now</p>
+				
+				
 			<%= form_for @asset, :html => { :multipart => true } do |f| %>
 
 
@@ -104,13 +109,19 @@
 			
 			</div>
 			
-			
+			<% end %>
 			
 			
 			<div id = "right">
 				
 				<% unless @user.assets.empty? %>
+					<% if @user == current_user %>
 					<p style = "color: #242424; font-size: 16px;padding-bottom: 1em;"> Your Photos</p>
+					<% else%> 
+					<span style="color: #242424; font-size: 16px;padding-bottom: 1em;">
+					<p> <%= @user.name + "'s" %> Photos</p>
+					</span>
+					<% end %>
 				<% end %>
 				       
 				       <% for asset in @user.assets %>
@@ -118,24 +129,19 @@
 							<%= link_to image_tag(asset.asset.url(:thumb)), asset %>
 							
 							
-							
+							<% if @user == current_user %>
 							
 							<%= link_to "x", asset_path(asset), :method => :delete,
 						                            :confirm => "Would you like to delete this photo?",
 						                            :title => @user.assets, :controller => "assets",
 						 							:action => :destroy %>
-							
+							<% end %>
 							</span>
 
 					   <% end %>
 					
 						
-				        <%= will_paginate @assets %>
-				    
-				
-				
-				
-					<!-- "/users/#{@user.id}/assets/#{@user.assets.find(params[:id])}"  -->
+				   
 				
 			</div>
 		</section>
