@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  	before_filter :authenticate, :only => [:index, :edit, :update,:show]
+  	before_filter :authenticate, :except => [:new, :index]
   	before_filter :test, :only => [:new]
   	before_filter :correct_user, :only => [:edit, :update]
 
@@ -15,7 +15,12 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@title = @user.name
 		#	5.times { @user.assets.build }
-		@asset = Asset.new if signed_in?
+		#@asset = Asset.new if signed_in?
+		if signed_in?
+          @asset = Asset.new
+          @feed_items = current_user.feed.paginate(:page => params[:page], :per_page => 5)
+          @crazy_items = current_user.crazy.paginate(:page => params[:page], :per_page => 10)
+        end
 		
   	end
 
@@ -59,7 +64,20 @@ class UsersController < ApplicationController
 		end
   	end
   	
-  
+  	def following
+        @title = "Following"
+        @user = User.find(params[:id])
+        @users = @user.following.paginate(:page => params[:page])
+        render 'show_follow'
+    end
+    
+    def followers
+        @title = "Followers"
+        @user = User.find(params[:id])
+        @users = @user.followers.paginate(:page => params[:page])
+        render 'show_follow'
+    end
+  	
   
   	private
   

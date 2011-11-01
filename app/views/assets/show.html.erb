@@ -7,7 +7,7 @@
 	
 	
 	#wrap {
-		min-height: auto;
+		min-height: 100%;
 		margin: 0 auto -auto px; /* Set footer height. */
 	}
 	
@@ -37,7 +37,7 @@
 <section id="forms" class="body">
 	
 	
-	
+	<p><%= link_to "Photo Owner", user_path(@asset.user_id) %> </p>
 	<p style = "color:#242424; padding: 1.5em 0 1.5em 0;">Sizes: <%= link_to "Thumbnail", @asset.asset.url(:thumb) %> |
 			  <%= link_to "Small", @asset.asset.url(:small) %> |
 			  <%= link_to "Medium", @asset.asset.url(:medium) %> |

@@ -1,0 +1,13 @@
+<% @user ||= current_user %>
+
+<a href="<%= following_user_path(@user) %>">
+  <span id="following" class="stat" style = "color: #868686;">
+    <%= @user.following.count %> following 
+  </span>
+</a>
+
+<a href="<%= followers_user_path(@user) %>">
+  <span id="followers" class="stat" style = "color: #868686;">
+    <%= pluralize(@user.followers.count, "follower") %>
+  </span>
+</a>

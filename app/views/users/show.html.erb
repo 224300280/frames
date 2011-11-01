@@ -1,150 +1,132 @@
 
 
-		<script type="text/javascript" src="scripts/signupcheck.js">
-		</script>
-		<style type="text/css">
-			
-			/*create sticky footer*/
-    		#wrap {
-        		min-height: 100%;
-        		margin: 0 auto -100px; /* Set footer height. */
-    		}
-    		
-    		footer{
-        		height: 100px; 
-    		}
-    		
-    		#forms {
-    			padding: 2.5em 0 0 2.5em;
-    			width: 920px;
-    		}
-    		
-    		.flash {
-				text-align: center;
-				color: #242424;
-				font-size: 30px;
-				padding: 0 0 1em 0;		
-			}
-    		
-    		#left {
-				width: 300px;  
-				float:left;
-				color: #242424;
-				
-    		}
-    		
-    		#left p {
-    			padding: 1em 0 1em 0;
-    			font-size: 16px;
-    		}
-			
-			#right {
-				text-align: center;
-				width: 600px;
-				padding: 7.5em 0 0 0;
-				float: right;
-				
-			}
-					
-			#form1 input{		
-				width:252px;
-				height: 20px;
-				border:1px solid #868686;
-				padding:3px;
-				border-radius: 10px;
-				-moz-border-radius: 10px;
-				-ms-border-radius: 10px;
-				-o-border-radius: 10px;
-				-chrome-border-radius: 10px;
-				-webkit-border-radius: 10px;
-			}	
-			
-		
-			.add {
-				text-align: center;
-				
-				
-			}
-			
-			span {
-				font-size: small;
-				color: #D00000;
-				font-weight:bold;
-			}
-			
-		</style>
+<script type="text/javascript" src="scripts/signupcheck.js">
+</script>
+<style type="text/css">
+
+	/*create sticky footer*/
+	#wrap {
+		min-height: 100%;
+  		margin: 0 auto -100px; /* Set footer height. */
+	}
+
+	footer {
+  		height: 100px; 
+	}
+
+	#forms {
+		padding: 2.5em 0 0 2.5em;
+		width: 920px;
+	}
+
+	.flash {
+		text-align: center;
+		color: #242424;
+		font-size: 30px;
+		padding: 0 0 1em 0;		
+	}
+
+	#left {
+		width: 300px;  
+		float:left;
+		color: #242424;
+	}
+
+	#left p {
+		padding: 1em 0 1em 0;
+		font-size: 16px;
+	}
+
+	#right {
+		text-align: center;
+		width: 600px;
+		padding: 3em 0 0 0;
+		float: right;
+	}
+
+	#form1 input{		
+		width:252px;
+		height: 20px;
+		border:1px solid #868686;
+		padding:3px;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-ms-border-radius: 10px;
+		-o-border-radius: 10px;
+		-chrome-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}	
+
+	.add {
+		text-align: center;
+	}
+
+	span {
+		font-size: small;
+		color: #D00000;
+		font-weight:bold;
+	}
+
+</style>
 	
-		<div id ="wrap">
-	
+<div id ="wrap">
+	<section id="forms" class="body"><!-- This section includes the section for signup form -->
+		<% flash.each do |key, value| %>
+			<div class = "flash <%= key %>"><%= value %></div>
+		<% end %>
 		
-		
-		<section id="forms" class="body"><!-- This section includes the section for signup form -->
-			<% flash.each do |key, value| %>
-				<div class = "flash <%= key %>"><%= value %></div>
-			<% end %>
-			<div id = "left">
+		<div id = "left">
 			<%= gravatar_for @user %> <span style = "color: #242424; font-size: 16px;"><%= @user.name %></span> <br />
-			<!-- <%= link_to user_path(@user), @user %> -->
-			 <strong>Number of Photos:</strong> <%= @user.assets.count %>	
-			</div>
-			
-			<% if @user == current_user %>
-			
-		
-			<div class = "add">
-				<p style = "color: #242424; font-size: 16px;"> Add Photos Now</p>
-				
-				
+	 		<strong>Number of Photos:</strong> <%= @user.assets.count %> <br />
+			<%= render 'follow_form' if signed_in? %>
+			<%= render 'shared/stats' %>	
+		</div>
+	
+		<% if @user == current_user %>
+	
+		<div class = "add">
+			<p style = "color: #242424; font-size: 16px;"> Add Photos Now</p>
 			<%= form_for @asset, :html => { :multipart => true } do |f| %>
-
-
-			  <p>
-			    <%= f.file_field :asset %>
-			
-			  </p>
-			  <div class="actions">
-			    <%= f.submit "Add Photo" %>
-			  </div>
+	  			<p>
+	    			<%= f.file_field :asset %>
+		  		</p>
+	  			<div class="actions">
+	    			<%= f.submit "Add Photo" %>
+	  			</div>
 			<% end %>
-			
-			</div>
-			
-			<% end %>
-			
-			
-			<div id = "right">
-				
-				<% unless @user.assets.empty? %>
-					<% if @user == current_user %>
+		</div>
+	
+		<% end %>
+	
+		<div id = "right">
+			<% unless @user.assets.empty? %>
+				<% if @user == current_user %>
 					<p style = "color: #242424; font-size: 16px;padding-bottom: 1em;"> Your Photos</p>
-					<% else%> 
-					<span style="color: #242424; font-size: 16px;padding-bottom: 1em;">
-					<p> <%= @user.name + "'s" %> Photos</p>
+					<div style="padding: 0 0 5em 0">
+							<%= render 'shared/crazy' %>
+				    </div>
+					<% else%>
+					<span style="color: #242424; font-size: 16px;padding-bottom: 3em;">
+						<p> <%= @user.name + "'s" %> Photos</p>
 					</span>
-					<% end %>
-				<% end %>
-				       
-				       <% for asset in @user.assets %>
+						<% for asset in @user.assets %>
 							<span style="padding: 0.5px;">
-							<%= link_to image_tag(asset.asset.url(:thumb)), asset %>
-							
-							
-							<% if @user == current_user %>
-							
-							<%= link_to "x", asset_path(asset), :method => :delete,
-						                            :confirm => "Would you like to delete this photo?",
-						                            :title => @user.assets, :controller => "assets",
-						 							:action => :destroy %>
-							<% end %>
+								<%= link_to image_tag(asset.asset.url(:thumb)), asset %>
 							</span>
-
-					   <% end %>
-					
-						
-				   
-				
-			</div>
-		</section>
-		</div> <!-- end of wrap -->
+ 					    <% end %>
+				<% end %>
+			<% end %>
+		  	
+			<% unless @feed_items.empty? %>
+				<% if @user == current_user %>
+					<p style = "color: #242424; font-size: 16px;padding-bottom: 1em;"> 
+						Photos From the People you Follow</p>
+		 			<%= render 'shared/feed' %>  
+				<% end %>
+			<% end %>
+			
+		</div>
+	</section>
+</div> <!-- end of wrap -->
 		
 		

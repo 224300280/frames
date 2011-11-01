@@ -1,6 +1,6 @@
 class AssetsController < ApplicationController
   
-  before_filter :authenticate, :only => [:create, :destroy, :show]
+  before_filter :authenticate, :only => [:create, :destroy]
  
  @@Fuck = "screwed"
  
@@ -14,6 +14,7 @@ class AssetsController < ApplicationController
     @asset  = current_user.assets.build(params[:asset])
         if @asset.save
           #flash[:success] = "Micropost created!"
+          @feed_items = []
           redirect_to current_user
         else
           #flash[:fail] = "Micropost Not created!"

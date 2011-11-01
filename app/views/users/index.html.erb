@@ -4,20 +4,12 @@
 		<style type="text/css">
 			
 			/*create sticky footer*/
-			<% if @assets.count > 56 %>
+		
     		#wrap {
-        		min-height: auto;
+        		min-height: 100%;
         		margin: 0 auto -auto px; /* Set footer height. */
     		}
 
-			<% else %>
-		
-			#wrap {
-        		min-height: 100%;
-        		margin: 0 auto -100px; /* Set footer height. */
-    		}
-			
-			<% end %>
     		
     		footer{
         		height: 100px; 
@@ -79,7 +71,11 @@
 			<div id ="right">
 			<% unless @assets.empty? %>
 					<% Asset.find_each do |asset|%>
-						<%= link_to image_tag(asset.asset.url(:thumb)), asset_path(asset) %> 
+						<% if signed_in? %>
+							<%= link_to image_tag(asset.asset.url(:thumb)), user_path(asset.user_id) %> 
+						<% else %>
+							<%= link_to image_tag(asset.asset.url(:thumb)), asset %> 
+						<% end %>
 					<% end %>
 					
 			<%end%>

@@ -1,0 +1,10 @@
+<span style="padding: 0.1px;">
+<%= link_to image_tag(crazy_item.asset.url(:thumb)), crazy_item %>
+<% if current_user?(crazy_item.user) %>
+ <%= link_to "x", crazy_item, :method => :delete,
+	                          :confirm => "Would you like to delete this photo?",
+	                          :title => crazy_item.asset.url %>
+
+<% end %>
+</span>
+

@@ -1,8 +1,6 @@
 <li>
-  <%= gravatar_for user, :size => 100 %>
+  <%= gravatar_for user, :size => 60 %>
+  <span style = "color: #868686; font-size: 15px;">
   <%= link_to user.name, user %>
-  <% if current_user.admin? %>
-  | <%= link_to "delete", user, :method => :delete, :confirm => "Would you like to delete this user?",
-                                :title => "Delete #{user.name}" %>
-  <% end %>
+  </span>
 </li>

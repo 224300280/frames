@@ -1,0 +1,6 @@
+<% unless @crazy_items.empty? %>
+  <table class="microposts" summary="User microposts">
+    <%= render :partial => 'shared/crazy_item', :collection => @crazy_items %>
+  </table>
+  <%= will_paginate @crazy_items %>
+<% end %>

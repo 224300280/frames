@@ -1,0 +1,123 @@
+
+
+<script type="text/javascript" src="scripts/signupcheck.js">
+</script>
+<style type="text/css">
+	
+	/*create sticky footer*/
+	#wrap {
+		min-height: 100%;
+		margin: 0 auto -100px; /* Set footer height. */
+	}
+	
+	footer{
+		height: 100px; 
+	}
+	
+	#forms {
+		padding: 2.5em 0 0 2.5em;
+		width: 920px;
+	}
+	
+	.flash {
+		text-align: center;
+		color: #242424;
+		font-size: 30px;
+		padding: 0 0 1em 0;		
+	}
+	
+	#left {
+		width: 300px;  
+		float:left;
+		color: #242424;
+		
+	}
+	
+	#left p {
+		padding: 1em 0 1em 0;
+		font-size: 16px;
+	}
+	
+	#right {
+		text-align: left;
+		width: 600px;
+		padding: 7.5em 0 0 0;
+		float: right;
+		
+	}
+			
+	#form1 input{		
+		width:252px;
+		height: 20px;
+		border:1px solid #868686;
+		padding:3px;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-ms-border-radius: 10px;
+		-o-border-radius: 10px;
+		-chrome-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}	
+	
+
+	.add {
+		text-align: center;
+		
+		
+	}
+	
+	span {
+		font-size: small;
+		color: #D00000;
+		font-weight:bold;
+	}
+	
+</style>
+
+<div id ="wrap">
+
+
+
+<section id="forms" class="body"><!-- This section includes the section for signup form -->
+	<% flash.each do |key, value| %>
+		<div class = "flash <%= key %>"><%= value %></div>
+	<% end %>
+	<div id = "left">
+	<%= gravatar_for @user %> <span style = "color: #242424; font-size: 16px;"><%= @user.name %></span> <br />
+	<!-- <%= link_to user_path(@user), @user %> -->
+	 <strong>Number of Photos:</strong> <%= @user.assets.count %> <br />
+	<%= render 'shared/stats' %> <br />	
+	
+	<% unless @users.empty? %>
+		<div style = "padding: 1em 0 0 0;">
+	   <% @users.each do |user| %>
+	      <%= link_to gravatar_for(user, :size => 30), user %>
+	   <% end %>
+		</div>
+    <% end %>
+		
+	</div>
+	
+	
+	
+	
+	<div id = "right">
+		<% unless @users.empty? %>
+		        <ul class="users">
+		          <%= render @users %>
+		        </ul>
+		        <%= will_paginate @users %>
+		      <% end %>
+	
+		
+				
+		   
+		
+	</div>
+	
+	
+	
+	
+</section>
+</div> <!-- end of wrap -->
+
